@@ -26,19 +26,86 @@ class LGModelTools: NSObject {
     }
     
         private class func getTypeForObject(object:AnyObject?) -> String {
-            var type:String = String()
-            if let object = object{
-                type = String(object.dynamicType)
-                if type.hasSuffix("Number"){
-                    type = "Int"
-                }
-                if type.hasSuffix("String"){
-                    type = "String"
-                }
-                else {
-                    type = "AnyObject"
-                }
+//            if let object = object{
+//                type = String(object.dynamicType)
+//                if type.hasSuffix("Number"){
+//                    type = "Int"
+//                }
+//                if type.hasSuffix("String"){
+//                    type = "String"
+//                }
+//                else {
+//                    type = "AnyObject"
+//                }
+//            }
+                // Basic types
+            if object is NSNumber{
+                return "NSNumber"
             }
-            return type
+            if object is Bool{
+                return "NSNumber"
+            }
+            if object is Int{
+                return "Bool"
+            }
+            if object is Double{
+                return "Double"
+            }
+            if object is Float{
+                return "Float"
+            }
+            if object is String{
+                return "String"
+            }
+            
+            // Arrays
+            if object is Array<NSNumber>{
+                return "[NSNumber]"
+            }
+            if object is Array<Bool>{
+                return "[Bool]"
+            }
+            if object is Array<Int>{
+                return "[Int]"
+            }
+            if object is Array<Double>{
+                return "[Double]"
+            }
+            if object is Array<Float>{
+                return "[Float]"
+            }
+            if object is Array<String>{
+                return "[String]"
+            }
+            if object is Array<AnyObject>{
+                return "[AnyObject]"
+            }
+            if object is Array<Dictionary<String, AnyObject>>{
+                return "[[String:AnyObject]]"
+            }
+            
+            // Dictionaries
+            if object is Dictionary<String, NSNumber>{
+                return "[String:NSNumber]"
+            }
+            if object is Dictionary<String, Bool>{
+                return "[String:Bool]"
+            }
+            if object is Dictionary<String, Int>{
+                return "[String:Int]"
+            }
+            if object is Dictionary<String, Double>{
+                return "[String:Double]"
+            }
+            if object is Dictionary<String, Float>{
+                return "[String:Float]"
+            }
+            if object is Dictionary<String, String>{
+                return "[String:String]"
+            }
+            if object is Dictionary<String, AnyObject>{
+                return "[String:AnyObject]"
+            }
+            return ""
         }
 }
